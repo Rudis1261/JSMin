@@ -45,7 +45,11 @@ foreach($lines as $line) {
 }
 
 foreach($words as $w) {
-    $test = str_replace($w, array_shift($pool), $test);
+    $test = str_replace(
+        "var {$w}",
+        "var ".array_shift($pool),
+        $test
+    );
 }
 
 file_put_contents($outputFileName, $test);
